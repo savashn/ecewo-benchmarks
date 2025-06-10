@@ -1,0 +1,16 @@
+[package]
+name = "axum-hello-world"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.8.4", features = ["json"] }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "macros"] }
+serde = { version = "1", features = ["derive"] }
+
+[profile.release]
+opt-level       = 3
+debug           = 0
+overflow-checks = false
+lto             = true
+codegen-units   = 1

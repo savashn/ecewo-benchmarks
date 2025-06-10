@@ -1,0 +1,32 @@
+     execution: local
+        script: benchmark.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 3m30s max duration (incl. graceful stop):
+              * default: Up to 100 looping VUs for 3m0s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+     ✓ status 200
+     ✓ body is not empty
+
+     checks.........................: 100.00% ✓ 23942     ✗ 0
+     data_received..................: 1.6 MB  8.9 kB/s
+     data_sent......................: 958 kB  5.3 kB/s
+     http_req_blocked...............: avg=3.32µs  min=0s med=0s    max=1.03ms p(90)=0s       p(95)=0s
+     http_req_connecting............: avg=2.09µs  min=0s med=0s    max=1.03ms p(90)=0s       p(95)=0s
+   ✓ http_req_duration..............: avg=87.68µs min=0s med=0s    max=5.98ms p(90)=504.49µs p(95)=540.6µs
+       { expected_response:true }...: avg=87.68µs min=0s med=0s    max=5.98ms p(90)=504.49µs p(95)=540.6µs
+   ✓ http_req_failed................: 0.00%   ✓ 0         ✗ 11971
+     http_req_receiving.............: avg=18.43µs min=0s med=0s    max=5.98ms p(90)=0s       p(95)=0s
+     http_req_sending...............: avg=3.96µs  min=0s med=0s    max=3.98ms p(90)=0s       p(95)=0s
+     http_req_tls_handshaking.......: avg=0s      min=0s med=0s    max=0s     p(90)=0s       p(95)=0s
+     http_req_waiting...............: avg=65.28µs min=0s med=0s    max=4.98ms p(90)=101.4µs  p(95)=508.9µs
+     http_reqs......................: 11971   66.268595/s
+     iteration_duration.............: avg=1s      min=1s med=1.01s max=1.05s  p(90)=1.01s    p(95)=1.01s
+     iterations.....................: 11971   66.268595/s
+     vus............................: 2       min=2       max=100
+     vus_max........................: 100     min=100     max=100
+
+
+running (3m00.6s), 000/100 VUs, 11971 complete and 0 interrupted iterations
+default ✓ [======================================] 000/100 VUs  3m0s

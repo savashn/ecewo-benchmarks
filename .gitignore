@@ -1,0 +1,7 @@
+**/node_modules/
+frameworks/ecewo/build
+frameworks/axum/Cargo.lock
+frameworks/axum/target
+frameworks/go/server
+frameworks/go/server.exe
+.vscode
