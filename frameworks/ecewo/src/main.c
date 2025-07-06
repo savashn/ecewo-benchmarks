@@ -10,7 +10,7 @@ void hello_world(Req *req, Res *res)
 
     char *json_string = cJSON_PrintUnformatted(json);
 
-    send_json(200, json_string);
+    send_json(res, 200, json_string);
 
     cJSON_Delete(json);
     free(json_string);

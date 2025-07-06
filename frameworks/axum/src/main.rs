@@ -24,6 +24,3 @@ async fn main() {
         .await
         .unwrap();
 }
-
-// cargo build --release
-// ./target/release/axum-hello-world.exe

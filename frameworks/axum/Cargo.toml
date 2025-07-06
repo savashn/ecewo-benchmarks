@@ -10,7 +10,5 @@ serde = { version = "1", features = ["derive"] }
 
 [profile.release]
 opt-level       = 3
-debug           = 0
-overflow-checks = false
 lto             = true
 codegen-units   = 1
