@@ -16,11 +16,18 @@ void hello_world(Req *req, Res *res)
     free(json_string);
 }
 
+void destroy_app()
+{
+    reset_router();
+}
+
 int main()
 {
     init_router();
+
     get("/", hello_world);
+
+    shutdown_hook(destroy_app);
     ecewo(3000);
-    reset_router();
     return 0;
 }
