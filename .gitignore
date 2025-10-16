@@ -1,4 +1,4 @@
-**/node_modules/
+frameworks/express/node_modules/
 frameworks/ecewo/build
 frameworks/axum/Cargo.lock
 frameworks/axum/target

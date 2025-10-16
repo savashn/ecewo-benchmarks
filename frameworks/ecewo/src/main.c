@@ -1,6 +1,7 @@
-#include "server.h"
 #include "ecewo.h"
 #include "cJSON.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 void hello_world(Req *req, Res *res)
 {
@@ -16,18 +17,22 @@ void hello_world(Req *req, Res *res)
     free(json_string);
 }
 
-void destroy_app()
-{
-    reset_router();
-}
-
 int main()
 {
-    init_router();
+    if (server_init() != SERVER_OK)
+    {
+        fprintf(stderr, "Failed to initialize server\n");
+        return 1;
+    }
 
     get("/", hello_world);
 
-    shutdown_hook(destroy_app);
-    ecewo(3000);
+    if (server_listen(3000) != SERVER_OK)
+    {
+        fprintf(stderr, "Failed to start server\n");
+        return 1;
+    }
+
+    server_run();
     return 0;
 }

@@ -1,41 +1,45 @@
 ## Test
 
-- Step 1: Ramp up to 1000 virtual users over 2 minute
-- Step 2: Stay at 1000 users for 2 minute
-- Step 3: Ramp down to 0 users over 2 minute
+- Step 1: Ramp up to 100 virtual users over 10 seconds
+- Step 2: Stay at 100 users for 40 seconds
+- Step 3: Ramp down to 0 users over 10 seconds
 
 ## Hardware
 CPU: 12th Gen Intel(R) Core(TM) i7-12700F, 2100 Mhz, 12 Core Processor
 
 ## Request Per Second
 
-| Framework | Total Request | RPS   | Total Data Received | Average Receive Rate |
-|-----------|---------------|-------|---------------------|----------------------|
-| Ecewo     | 238,833       | 661.9 | 28 MB               | 78 kB/s              |
-| Axum      | 238,790       | 661.8 | 32 MB               | 89 kB/s              |
-| Go        | 238,723       | 661.4 | 33 MB               | 90 kB/s              |
-| Hono      | 238,765       | 661.7 | 43 MB               | 120 kB/s             |
-| Express   | 238,710       | 661.5 | 62 MB               | 173 kB/s             |
+Higher is better.
+
+| Framework  | Total Request | RPS   | Total Data Received | Average Receive Rate |
+|------------|---------------|-------|---------------------|----------------------|
+| Ecewo      | 5010          | 82.5  | 777 kB              | 13 kB/s              |
+| Axum       | 5007          | 82.4  | 671 kB              | 11 kB/s              |
+| Go         | 5007          | 82.4  | 681 kB              | 11 kB/s              |
+| Express.js | 5000          | 82.3  | 1.3 MB              | 22 kB/s              |
 
 ## HTTP Request Duration
 
-| Framework | Average   | Median   | Max     | P90      | P95     |
-|-----------|-----------|----------|---------|----------|---------|
-| Ecewo     | 166.24µs  | 0s       | 19.52ms | 545.29µs | 922µs   |
-| Axum      | 185.67µs  | 0s       | 35.9ms  | 549.79µs | 971.5µs |
-| Go        | 720.42µs  | 598.19µs | 22.15ms | 1.46ms   | 1.93ms  |
-| Hono      | 393.05µs  | 341.8µs  | 23.08ms | 1ms      | 1.12ms  |
-| Express   | 1.38ms    | 1.08ms   | 18.83ms | 2.83ms   | 3.7ms   |
+Lower is better.
+
+| Framework  | Average   | Median   | Max     | P90      | P95     |
+|------------|-----------|----------|---------|----------|---------|
+| Ecewo      | 0.387ms   | 0.152ms  | 7.23ms  | 0.99ms   | 1.09ms  |
+| Axum       | 0.442ms   | 0.505ms  | 5.61ms  | 1.01ms   | 1.21ms  |
+| Go         | 0.958ms   | 0.725ms  | 12.62ms | 1.97ms   | 2.48ms  |
+| Express.js | 1.85ms    | 1.58ms   | 11.05ms | 3.48ms   | 4.27ms  |
 
 ## HTTP Request Waiting Time (Server Processing Time)
 
-| Framework | Average   | Median   | Max     | P90      | P95     |
-|-----------|-----------|----------|---------|----------|---------|
-| Ecewo     | 143.7µs   | 0s       | 19.52ms | 523.8µs  | 868.5µs |
-| Axum      | 157.84µs  | 0s       | 34ms    | 522.4µs  | 889.4µs |
-| Go        | 700.04µs  | 586.09µs | 22.15ms | 1.44ms   | 1.91ms  |
-| Hono      | 365.81µs  | 134µs    | 21.08ms | 1ms      | 1.09ms  |
-| Express   | 1.36ms    | 1.07ms   | 18.83ms | 2.81ms   | 3.67ms  |
+Lower is better.
+
+| Framework  | Average   | Median   | Max     | P90      | P95     |
+|------------|-----------|----------|---------|----------|---------|
+| Ecewo      | 0.313ms   | 0s       | 7.23ms  | 0.98ms   | 1.02ms  |
+| Axum       | 0.362ms   | 0.089ms  | 4.59ms  | 1.00ms   | 1.04ms  |
+| Go         | 0.891ms   | 0.698ms  | 12.62ms | 1.80ms   | 2.34ms  |
+| Express.js | 1.78ms    | 1.52ms   | 11.05ms | 3.39ms   | 4.12ms  |
 
 ## Run Benchmark
+
 Run `k6 run benchmark.js` in the terminal

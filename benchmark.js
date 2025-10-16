@@ -3,19 +3,19 @@ import { check, sleep } from 'k6';
 
 export let options = {
     stages: [
-        { duration: '2m', target: 1000 },  // Ramp up to 1000 virtual users over 2 minute
-        { duration: '2m', target: 1000 },  // Stay at 1000 users for 2 minute
-        { duration: '2m', target: 0 },     // Ramp down to 0 users over 2 minute (cool-down)
+        { duration: '10s', target: 100 },
+        { duration: '40s', target: 100 },
+        { duration: '10s', target: 0 },
     ],
     thresholds: {
-        http_req_duration: ['p(95)<500'], // 95% of requests must complete below 500ms
-        http_req_failed: ['rate<0.01'],   // Error rate must be less than 1%
+        http_req_duration: ['p(95)<10'],    // 95% of requests must complete below 10ms
+        http_req_failed: ['rate<0.01'],     // Error rate must be less than 1%
     },
 };
 
 export default function () {
-    const res = http.get('http://localhost:3000/');     // Others run at this
-    // const res = http.get('http://127.0.0.1:3000/');  // Axum runs at this
+    const res = http.get('http://localhost:3000/');     // Others run on this
+    // const res = http.get('http://127.0.0.1:3000/');  // Axum runs on this
 
     check(res, {
         'status 200': (r) => r.status === 200,
