@@ -22,7 +22,7 @@ include(FetchContent)
 FetchContent_Declare(
     ecewo
     GIT_REPOSITORY https://github.com/savashn/ecewo.git
-    GIT_TAG experimental
+    GIT_TAG v2.0.0
     GIT_SHALLOW TRUE
 )
 
