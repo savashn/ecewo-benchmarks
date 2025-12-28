@@ -39,11 +39,7 @@ FetchContent_MakeAvailable(ecewo)
 
 add_executable(server
     main.c
-    vendors/ecewo-cluster.c
-)
-
-target_include_directories(server PRIVATE
-    ${CMAKE_SOURCE_DIR}/vendors
+    ecewo-cluster.c
 )
 
 target_link_libraries(server PRIVATE ecewo)
