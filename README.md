@@ -4,17 +4,17 @@ This is the benchmark test repo for [ecewo](https://github.com/savashn/ecewo).
 
 ### System
 
-**Machine:** 12th Gen Intel Core i7-12700F x 20, 32GB RAM, SSD
-**OS:** Fedora Workstation 43
-**Method:** `wrk -t8 -c100 -d40s http://localhost:3000` * 2, taking the second results.
+- **Machine:** 12th Gen Intel Core i7-12700F x 20, 32GB RAM, SSD
+- **OS:** Fedora Workstation 43
+- **Method:** `wrk -t8 -c100 -d40s http://localhost:3000` * 2, taking the second results.
 
 ### Versions
 
-Node: v22.20.0
-Rust: v1.91.1
-Go: v1.25.5
-GCC: v15.2.1
-CMake: v3.31.6
+- Node: v22.20.0
+- Rust: v1.91.1
+- Go: v1.25.5
+- GCC: v15.2.1
+- CMake: v3.31.6
 
 ### Results
 
