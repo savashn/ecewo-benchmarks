@@ -1,10 +1,6 @@
 ### Run Benchmark
 
 ```shell
-mkdir build
-cd build
-cmake ..
-cmake --build .
-./server
+node cluster.js
 wrk -t8 -c100 -d40s http://localhost:3000
 ```

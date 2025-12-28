@@ -1,6 +1,7 @@
-### Compile and Run Axum:
+### Run Benchmark
 
 ```shell
 cargo build --release
-./target/release/axum-hello-world.exe
+./target/release/server
+wrk -t8 -c100 -d40s http://localhost:3000
 ```

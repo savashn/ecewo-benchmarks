@@ -1,6 +1,7 @@
+mod server;
+
 use axum::{routing::get, Json, Router};
 use serde::Serialize;
-use std::net::SocketAddr;
 
 #[derive(Serialize)]
 struct HelloResponse {
@@ -13,14 +14,15 @@ async fn hello_world() -> Json<HelloResponse> {
     })
 }
 
-#[tokio::main]
-async fn main() {
+fn main() {
+    // Multi-thread SO_REUSEPORT server
+    // Her thread kendi Tokio runtime'ı ile çalışır
+    server::start_tokio(serve_app);
+}
+
+async fn serve_app() {
     let app = Router::new().route("/", get(hello_world));
-
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    println!("Server running at http://{}", addr);
-
-    axum::serve(tokio::net::TcpListener::bind(addr).await.unwrap(), app.into_make_service())
-        .await
-        .unwrap();
+    
+    // SO_REUSEPORT ile port 3000'de dinle
+    server::serve_hyper(app, Some(3000)).await;
 }
