@@ -15,14 +15,11 @@ async fn hello_world() -> Json<HelloResponse> {
 }
 
 fn main() {
-    // Multi-thread SO_REUSEPORT server
-    // Her thread kendi Tokio runtime'ı ile çalışır
     server::start_tokio(serve_app);
 }
 
 async fn serve_app() {
     let app = Router::new().route("/", get(hello_world));
     
-    // SO_REUSEPORT ile port 3000'de dinle
     server::serve_hyper(app, Some(3000)).await;
 }
