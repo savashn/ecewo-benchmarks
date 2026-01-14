@@ -31,15 +31,19 @@ include(FetchContent)
 FetchContent_Declare(
     ecewo
     GIT_REPOSITORY https://github.com/savashn/ecewo.git
-    GIT_TAG v3.0.1
+    GIT_TAG v3.1.0
     GIT_SHALLOW TRUE
 )
 
 FetchContent_MakeAvailable(ecewo)
 
+ecewo_plugin(cluster VERSION v0.1.0)
+
 add_executable(server
     main.c
-    ecewo-cluster.c
 )
 
-target_link_libraries(server PRIVATE ecewo)
+target_link_libraries(server PRIVATE
+    ecewo::ecewo
+    ecewo::cluster
+)
